@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150126161142) do
+ActiveRecord::Schema.define(version: 20150127021939) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string   "namespace"
@@ -78,6 +78,19 @@ ActiveRecord::Schema.define(version: 20150126161142) do
   end
 
   add_index "constituencies", ["voivodeship_id"], name: "index_constituencies_on_voivodeship_id"
+
+  create_table "users", force: :cascade do |t|
+    t.string   "login"
+    t.string   "email"
+    t.string   "crypted_password"
+    t.boolean  "admin"
+    t.integer  "constituency_id"
+    t.string   "persistence_token"
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
+  end
+
+  add_index "users", ["constituency_id"], name: "index_users_on_constituency_id"
 
   create_table "voivodeships", force: :cascade do |t|
     t.string   "name"
