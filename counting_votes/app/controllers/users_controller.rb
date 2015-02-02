@@ -1,10 +1,15 @@
 class UsersController < ApplicationController
+  before_action :set_constituencies, only: [:new, :edit, :update, :create]
+  before_action :set_user, only: [:new, :edit, :update, :create]
+  
   def index
     @users = User.all
   end
   def new
   	@user = User.new
   end
+  def show
+  end 
 
   def create
   	@user = User.new(user_params)
@@ -16,7 +21,7 @@ class UsersController < ApplicationController
     end
   end
 
-  def edit
+  def edit 
   	@user = current_user
   end
 
@@ -29,5 +34,23 @@ class UsersController < ApplicationController
       render :action => 'edit'
     end
   end
+
+  def set_constituencies
+    @constituencies = Constituency.all.map do |constituency|
+    [ constituency.number, constituency.id]
+    return @constituencies
+  end
+end
+
+private
+  def set_user
+      @user = User.find(params[:id])
+  end
+
+  def user_params
+      params.require(:user).permit(:login, :password, :password_confirmation, :password_salt, :persistence_token, :email, :role, :admin, :constituency_id)
+  end
+
+end
   
 end

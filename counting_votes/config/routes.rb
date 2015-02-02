@@ -1,4 +1,18 @@
 Rails.application.routes.draw do
+  get 'constituencies/index'
+
+  get 'constituencies/new'
+
+  get 'constituencies/create'
+
+  get 'constituencies/update'
+
+  get 'index/new'
+
+  get 'index/create'
+
+  get 'index/updte'
+
   get 'static/index'
 
   resources :votes

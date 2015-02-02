@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150127021939) do
+ActiveRecord::Schema.define(version: 20150202205602) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string   "namespace"
@@ -48,9 +48,11 @@ ActiveRecord::Schema.define(version: 20150127021939) do
 
   create_table "committees", force: :cascade do |t|
     t.string   "name"
-    t.string   "logo"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string   "logo_file_name"
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
+    t.string   "logo_content_type"
+    t.integer  "logo_file_size"
   end
 
   create_table "committees_voivodeships", force: :cascade do |t|
@@ -64,7 +66,7 @@ ActiveRecord::Schema.define(version: 20150127021939) do
   add_index "committees_voivodeships", ["voivodeship_id"], name: "index_committees_voivodeships_on_voivodeship_id"
 
   create_table "constituencies", force: :cascade do |t|
-    t.integer  "number"
+    t.string   "name"
     t.integer  "mandate_number"
     t.integer  "authorized_number"
     t.integer  "empty_votes"
@@ -88,6 +90,8 @@ ActiveRecord::Schema.define(version: 20150127021939) do
     t.string   "persistence_token"
     t.datetime "created_at",        null: false
     t.datetime "updated_at",        null: false
+    t.string   "role"
+    t.string   "password_salt"
   end
 
   add_index "users", ["constituency_id"], name: "index_users_on_constituency_id"

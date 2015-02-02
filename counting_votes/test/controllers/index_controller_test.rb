@@ -1,11 +1,6 @@
 require 'test_helper'
 
-class ConstituenciesControllerTest < ActionController::TestCase
-  test "should get index" do
-    get :index
-    assert_response :success
-  end
-
+class IndexControllerTest < ActionController::TestCase
   test "should get new" do
     get :new
     assert_response :success
@@ -16,8 +11,8 @@ class ConstituenciesControllerTest < ActionController::TestCase
     assert_response :success
   end
 
-  test "should get update" do
-    get :update
+  test "should get updte" do
+    get :updte
     assert_response :success
   end
 
