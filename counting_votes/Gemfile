@@ -50,8 +50,5 @@ group :development, :test do
 
   gem 'polish'
   
-  gem 'cancancan', '~> 1.10'
-
-  gem 'paperclip'
 end
 

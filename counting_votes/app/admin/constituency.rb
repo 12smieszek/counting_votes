@@ -1,7 +1,7 @@
 ActiveAdmin.register Constituency do
   permit_params :name, :voivodeship, :voivodeship_id, :mandate_number, :authorized_number, :empty_votes, :many_votes, :other_votes, :given_cards, :returned_cards
-
-index do
+  
+  index do
     selectable_column
     id_column
     column :name
@@ -16,6 +16,4 @@ index do
     actions
   end
 
-
-  
 end
