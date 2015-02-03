@@ -1,7 +1,7 @@
 class Constituency < ActiveRecord::Base
   belongs_to :voivodeship
 
-  validates :name, presence:true
+  validates :name, presence: true
   validates :mandate_number, presence: true, numericality: true
   validates :authorized_number, presence: true, numericality: true
   validates :empty_votes, presence: true, numericality: true
@@ -9,11 +9,9 @@ class Constituency < ActiveRecord::Base
   validates :other_votes, presence: true, numericality: true
   validates :given_cards, presence: true, numericality: true
   validates :returned_cards, presence: true, numericality: true
-
-   def set_constituencies
-    @constituencies = Constituency.all.map do |constituency|
+  
+  @constituencies = Constituency.all.map do |constituency|
     [ constituency.name, constituency.id]
-    return @constituencies
   end
-end
+
 end
